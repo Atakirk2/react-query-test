@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const RQSuperHeroesPage = () => {
   const response = useQuery("super-hero", () => {
-    return axios.get("http://localhost:4000/superheroes1");
+    return axios.get("http://localhost:4000/superheroes");
   });
 
   if (response.isLoading) {
