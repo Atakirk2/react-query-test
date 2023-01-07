@@ -4,6 +4,8 @@ import axios from "axios";
 export const RQSuperHeroesPage = () => {
   const response = useQuery("super-hero", () => {
     return axios.get("http://localhost:4000/superheroes");
+  },{
+    enabled:false
   });
 
   if (response.isLoading) {
@@ -16,7 +18,8 @@ export const RQSuperHeroesPage = () => {
   return (
     <div>
       <h2>RQSuperHeroPage</h2>
-      {response.data.data.map((hero) => {
+      <button onClick={response.refetch}>Fetch</button>
+      {response.data?.data.map((hero) => {
         return <h3>{hero.name}</h3>;
       })}
     </div>
