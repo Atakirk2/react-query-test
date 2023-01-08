@@ -1,7 +1,6 @@
-import { useQuery } from "react-query";
-import axios from "axios";
 import { useState } from "react";
 import { useSuperHeroData } from "../hooks/useSuperHeroData";
+import { Link } from "react-router-dom";
 
 export const RQSuperHeroesPage = () => {
   const [interval, setInterval] = useState(3000);
@@ -21,9 +20,9 @@ export const RQSuperHeroesPage = () => {
 
   return (
     <div>
-      <h2>RQSuperHeroPage</h2>
+      <h2>RQSuperHeroesPage</h2>
       {response.data?.data.map((hero) => {
-        return <h3>{hero.name}</h3>;
+        return <div key={hero.id}><Link to={`/rq-super-hero/${hero.id}`}>{hero.name}</Link></div>;
       })}
     </div>
   );
